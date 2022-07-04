@@ -40,25 +40,28 @@ canvas.addEventListener("mousemove", function (e) {
 ////////////// Touch Events /////////////////
 
 canvas.addEventListener("touchstart", function (e) {
-  [...e.changedTouches].forEach((touch) => {
-    touch.x = e.x;
-    //   console.log(e);
-    touch.y = e.y;
-    for (let i = 0; i < 15; i++) {
-      particlesArray.push(new Particle());
-    }
-  });
+  e.preventDefault();
+  touch.x = e.x;
+  //   console.log(e);
+  touch.y = e.y;
+  for (let i = 0; i < 10; i++) {
+    particlesArray.push(new Particle());
+  }
 });
 
 canvas.addEventListener("touchmove", function (e) {
-  [...e.changedTouches].forEach((touch) => {
-    touch.x = e.x;
-    //   console.log(e);
-    touch.y = e.y;
-    for (let i = 0; i < 5; i++) {
-      particlesArray.push(new Particle());
-    }
+  var touch = e.touches[0];
+  var mouseEvent = new MouseEvent("mousemove", {
+    clientX: touch.clientX,
+    clientY: touch.clientY,
   });
+  canvas.dispatchEvent(mouseEvent);
+  // touch.x = e.x;
+  //   console.log(e);
+  // touch.y = e.y;
+  for (let i = 0; i < 5; i++) {
+    particlesArray.push(new Particle());
+  }
 });
 
 ////////////////////////////////////////////
