@@ -41,6 +41,12 @@ canvas.addEventListener("mousemove", function (e) {
 
 canvas.addEventListener("touchstart", function (e) {
   e.preventDefault();
+  var touch = e.touches[0];
+  var mouseEvent = new MouseEvent("click", {
+    clientX: touch.clientX,
+    clientY: touch.clientY,
+  });
+  canvas.dispatchEvent(mouseEvent);
   touch.x = e.x;
   //   console.log(e);
   touch.y = e.y;
@@ -70,7 +76,7 @@ class Particle {
   constructor() {
     this.x = mouse.x; //touch.x
     this.y = mouse.y; //touch.y
-    this.size = Math.random() * 30 + 1;
+    this.size = Math.random() * 20 + 1;
     this.speedX = Math.random() * 3 - 1.5; //random speed on x axis
     this.speedY = Math.random() * 3 - 1.5; //random speed on y axis
     this.color = "hsl(" + hue + ", 100%, 50%)";
@@ -105,7 +111,7 @@ function handleParticles() {
       const dx = particlesArray[i].x - particlesArray[j].x;
       const dy = particlesArray[i].y - particlesArray[j].y;
       const distance = Math.sqrt(dx * dx + dy * dy);
-      if (distance < 150) {
+      if (distance < 50) {
         ctx.beginPath();
         ctx.strokeStyle = particlesArray[i].color;
         ctx.lineWidth = particlesArray[i].size / 10;
@@ -128,7 +134,7 @@ function animate() {
   // ctx.fillStyle = "rgba(0,0,0,0.1)";
   //ctx.fillRect(0, 0, canvas.width, canvas.height);
   handleParticles();
-  hue += 2; //can change speed here or back to original hue++
+  hue += 5; //can change speed here or back to original hue++ or 2
   requestAnimationFrame(animate);
 }
 
