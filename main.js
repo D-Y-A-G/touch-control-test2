@@ -24,7 +24,7 @@ canvas.addEventListener("click", function (e) {
   mouse.x = e.x;
   //   console.log(e);
   mouse.y = e.y;
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 5; i++) {
     particlesArray.push(new Particle());
   }
 });
@@ -44,7 +44,7 @@ canvas.addEventListener("touchstart", function (e) {
   touch.x = e.x;
   //   console.log(e);
   touch.y = e.y;
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < 5; i++) {
     particlesArray.push(new Particle());
   }
 });
@@ -70,7 +70,7 @@ class Particle {
   constructor() {
     this.x = mouse.x; //touch.x
     this.y = mouse.y; //touch.y
-    this.size = Math.random() * 20 + 1;
+    this.size = Math.random() * 15 + 1;
     this.speedX = Math.random() * 3 - 1.5; //random speed on x axis
     this.speedY = Math.random() * 3 - 1.5; //random speed on y axis
     this.color = "hsl(" + hue + ", 100%, 50%)";
