@@ -70,7 +70,7 @@ class Particle {
   constructor() {
     this.x = mouse.x; //touch.x
     this.y = mouse.y; //touch.y
-    this.size = Math.random() * 20 + 1;
+    this.size = Math.random() * 30 + 1;
     this.speedX = Math.random() * 3 - 1.5; //random speed on x axis
     this.speedY = Math.random() * 3 - 1.5; //random speed on y axis
     this.color = "hsl(" + hue + ", 100%, 50%)";
@@ -105,7 +105,7 @@ function handleParticles() {
       const dx = particlesArray[i].x - particlesArray[j].x;
       const dy = particlesArray[i].y - particlesArray[j].y;
       const distance = Math.sqrt(dx * dx + dy * dy);
-      if (distance < 60) {
+      if (distance < 150) {
         ctx.beginPath();
         ctx.strokeStyle = particlesArray[i].color;
         ctx.lineWidth = particlesArray[i].size / 10;
